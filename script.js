@@ -1,18 +1,27 @@
-// script.js
 console.log("Portfolio Loaded Successfully!");
 
-// Global observer options
+const EMAILJS_PUBLIC_KEY = "aU2ntCTGbZd2p9ulV"; 
+const EMAILJS_SERVICE_ID = "service_h0cb8vr";
+const EMAILJS_TEMPLATE_ID = "template_ivp13cv";
+
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
 
-// Add some interactive functionality
 document.addEventListener('DOMContentLoaded', function() {
+
     
-    // Navbar scroll effect
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+        console.log(" EmailJS Initialized!");
+    } else {
+        console.error(" EmailJS SDK not loaded. Check script tag in HTML.");
+    }
+
+
     const navbar = document.querySelector('.navbar');
-    
+
     if (navbar) {
         window.addEventListener('scroll', function() {
             if (window.scrollY > 100) {
@@ -24,15 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Smooth scrolling for anchor links
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
@@ -42,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
     
-    // Add animation to elements when they come into view
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -51,13 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, observerOptions);
-    
-    // Observe elements for animation
+
     document.querySelectorAll('.hero-circle, .hero-title, .hero-sub, .hero-tagline, .hero-buttons, .hero-icons').forEach(el => {
         observer.observe(el);
     });
 
-    // About section animation
+
     const aboutObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -66,35 +73,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe about section elements
     document.querySelectorAll('.about-img-wrapper, .about-content').forEach(el => {
         aboutObserver.observe(el);
     });
 
-    // Skills section animation
     const skillsObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                // Animate progress bars
-                const progressBars = entry.target.querySelectorAll('.progress-bar');
-                progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 300);
-                });
+    
             }
         });
     }, observerOptions);
 
-    // Observe skills section elements
     document.querySelectorAll('.skill-category, .skills-badges').forEach(el => {
         skillsObserver.observe(el);
     });
 
-    // Projects section animation
+
     const projectsObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -103,12 +99,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe project cards
     document.querySelectorAll('.project-card').forEach(el => {
         projectsObserver.observe(el);
     });
 
-    // Experience section animation
     const experienceObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -117,12 +111,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe timeline items
     document.querySelectorAll('.timeline-item').forEach(el => {
         experienceObserver.observe(el);
     });
 
-    // Contact section animation
     const contactObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -131,37 +123,120 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe contact elements
     document.querySelectorAll('.contact-card, .footer-content').forEach(el => {
         contactObserver.observe(el);
     });
 
-    // ✅ Certifications PDF Viewer - FIXED VERSION
+
     initializeCertifications();
-    
-    // ✅ Contact Form Handling
-    initializeContactForm();
+
+    initializeEmailJSContactForm();
 });
 
-// Certifications PDF Viewer Function
+function initializeEmailJSContactForm() {
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm && typeof emailjs !== 'undefined') {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !message) {
+                showFormMessage('error', 'Please fill in all fields.');
+                return;
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showFormMessage('error', 'Please enter a valid email address.');
+                return;
+            }
+
+            const sendBtn = this.querySelector('.btn-send');
+            const originalText = sendBtn.innerHTML;
+            sendBtn.innerHTML = '<i class="bi bi-hourglass"></i> Sending...';
+            sendBtn.disabled = true;
+
+            emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+                .then(function(response) {
+                    console.log(' Email sent successfully!', response.status, response.text);
+                    
+        
+                    sendBtn.innerHTML = '<i class="bi bi-check-circle"></i> Message Sent!';
+                    showFormMessage('success', 'Thank you! Your message has been sent successfully.');
+                    
+                
+                    setTimeout(() => {
+                        sendBtn.innerHTML = originalText;
+                        sendBtn.disabled = false;
+                        contactForm.reset();
+                    }, 3000);
+                    
+                }, function(error) {
+                    console.error(' EmailJS Failed:', error);
+                    sendBtn.innerHTML = '<i class="bi bi-x-circle"></i> Failed';
+                    showFormMessage('error', 'Sorry, failed to send message. Please try again or email directly.');
+                    setTimeout(() => {
+                        sendBtn.innerHTML = originalText;
+                        sendBtn.disabled = false;
+                    }, 3000);
+                });
+        });
+    } else {
+        console.error(" Contact form or EmailJS SDK not available.");
+    }
+}
+
+function showFormMessage(type, message) {
+    
+    const existingMessage = document.querySelector('.form-message');
+    if (existingMessage) existingMessage.remove();
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `form-message alert alert-${type === 'success' ? 'success' : 'danger'} mt-3`;
+    messageDiv.innerHTML = `
+        <i class="bi ${type === 'success' ? 'bi-check-circle' : 'bi-exclamation-triangle'}"></i>
+        ${message}
+    `;
+    messageDiv.style.borderRadius = '10px';
+    messageDiv.style.padding = '15px';
+    messageDiv.style.marginTop = '15px';
+    messageDiv.style.transition = 'all 0.3s ease';
+    const contactForm = document.getElementById('contactForm');
+    const submitButton = contactForm.querySelector('.btn-send');
+    
+    contactForm.insertBefore(messageDiv, submitButton);
+    setTimeout(() => {
+        if (messageDiv.parentNode) {
+            messageDiv.style.opacity = '0';
+            messageDiv.style.height = '0';
+            messageDiv.style.margin = '0';
+            messageDiv.style.padding = '0';
+            messageDiv.style.overflow = 'hidden';
+            
+            setTimeout(() => {
+                if (messageDiv.parentNode) messageDiv.remove();
+            }, 500);
+        }
+    }, 5000);
+}
+
 function initializeCertifications() {
     const viewCertButtons = document.querySelectorAll('.view-cert-btn');
-    
+
     viewCertButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
+
             const certificationCard = this.closest('.certification-card');
             const pdfPath = certificationCard.getAttribute('data-pdf');
             const certTitle = certificationCard.querySelector('h4').textContent;
-            
+
             console.log('Loading PDF:', pdfPath);
-            
-            // Set modal title
+
             document.querySelector('#pdfModal .modal-title').textContent = certTitle;
-            
-            // Reset and prepare modal content
+
             const modalBody = document.querySelector('#pdfModal .modal-body');
             modalBody.innerHTML = `
                 <div class="pdf-loading text-center py-5">
@@ -172,113 +247,59 @@ function initializeCertifications() {
                 </div>
                 <iframe id="pdfViewer" width="100%" height="600px" frameborder="0" style="display: none;"></iframe>
                 <div id="pdfError" class="alert alert-warning mt-3" style="display: none;">
-                    <i class="bi bi-exclamation-triangle"></i> PDF file not found. Please check the file path.
+                    <i class="bi bi-exclamation-triangle"></i> PDF file not found.
                 </div>
             `;
-            
+
             const pdfViewer = document.getElementById('pdfViewer');
             const downloadLink = document.getElementById('downloadPdf');
             const pdfError = document.getElementById('pdfError');
-            
-            // Set PDF source with proper encoding
+
             pdfViewer.src = pdfPath + '#toolbar=0&navpanes=0';
             downloadLink.href = pdfPath;
             downloadLink.setAttribute('download', certTitle.toLowerCase().replace(/\s+/g, '-') + '.pdf');
-            downloadLink.innerHTML = '<i class="bi bi-download"></i> Download PDF';
-            
-            // Show loading initially
-            pdfError.style.display = 'none';
-            
-            // Check if PDF loads successfully
+
             pdfViewer.onload = function() {
-                console.log('PDF loaded successfully');
                 document.querySelector('.pdf-loading').style.display = 'none';
                 pdfViewer.style.display = 'block';
                 pdfError.style.display = 'none';
             };
-            
+
             pdfViewer.onerror = function() {
-                console.log('PDF failed to load:', pdfPath);
                 document.querySelector('.pdf-loading').style.display = 'none';
                 pdfViewer.style.display = 'none';
                 pdfError.style.display = 'block';
-                
-                // Show fallback image if PDF fails
+
                 const imagePath = certificationCard.querySelector('img').src;
                 const certDescription = certificationCard.querySelector('p').textContent;
-                
+
                 modalBody.innerHTML = `
                     <div class="certificate-fallback text-center">
                         <h4 class="text-light mb-3">${certTitle}</h4>
                         <p class="text-muted mb-4">${certDescription}</p>
-                        <div class="certificate-img-container">
-                            <img src="${imagePath}" alt="${certTitle}" class="img-fluid rounded shadow" style="max-height: 400px;">
-                        </div>
+                        <img src="${imagePath}" class="img-fluid rounded shadow" style="max-height: 400px;">
                         <div class="alert alert-info mt-3">
-                            <i class="bi bi-info-circle"></i> 
-                            Showing certificate preview (PDF loading failed)
+                            <i class="bi bi-info-circle"></i> Showing certificate preview (PDF failed)
                         </div>
                     </div>
                 `;
-                
+
                 downloadLink.href = imagePath;
                 downloadLink.setAttribute('download', certTitle.toLowerCase().replace(/\s+/g, '-') + '.png');
-                downloadLink.innerHTML = '<i class="bi bi-download"></i> Download Image';
             };
-            
-            // Show modal
+
             const pdfModal = new bootstrap.Modal(document.getElementById('pdfModal'));
             pdfModal.show();
         });
     });
-    
-    // Reset modal when closed
+
     document.getElementById('pdfModal').addEventListener('hidden.bs.modal', function() {
         const modalBody = document.querySelector('#pdfModal .modal-body');
         modalBody.innerHTML = `
             <iframe id="pdfViewer" width="100%" height="600px" frameborder="0" style="display: none;"></iframe>
             <div id="pdfError" class="alert alert-warning mt-3" style="display: none;">
-                <i class="bi bi-exclamation-triangle"></i> PDF file not found. Please check the file path.
+                <i class="bi bi-exclamation-triangle"></i> PDF file not found.
             </div>
         `;
     });
-}
-
-// Contact Form Handling Function
-function initializeContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Simple form validation
-            if (!formData.name || !formData.email || !formData.message) {
-                alert('Please fill in all fields.');
-                return;
-            }
-            
-            // Here you would typically send the data to a server
-            // For now, we'll just show a success message
-            const sendBtn = this.querySelector('.btn-send');
-            const originalText = sendBtn.innerHTML;
-            
-            sendBtn.innerHTML = '<i class="bi bi-check"></i> Message Sent!';
-            sendBtn.disabled = true;
-            
-            setTimeout(() => {
-                sendBtn.innerHTML = originalText;
-                sendBtn.disabled = false;
-                this.reset();
-                
-                // Show success notification
-                alert('Thank you for your message! I\'ll get back to you soon.');
-            }, 2000);
-        });
-    }
 }

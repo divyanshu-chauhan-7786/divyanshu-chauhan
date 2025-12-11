@@ -1,4 +1,3 @@
-/* style.css */
 /* ========== CSS VARIABLES ========== */
 :root {
     --primary: #5ce1e6;
@@ -587,7 +586,6 @@ html {
     }
 }
 
-
 /* ========== SKILLS SECTION ========== */
 .skills-section {
     background: linear-gradient(180deg, var(--dark-bg-light), var(--dark-bg));
@@ -677,6 +675,7 @@ html {
     font-size: 0.9rem;
 }
 
+/* -------- PROGRESS BAR (NO ANIMATION) -------- */
 .progress {
     height: 8px;
     background: rgba(92, 225, 230, 0.1);
@@ -689,38 +688,17 @@ html {
     height: 100%;
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     border-radius: 10px;
-    position: relative;
-    transition: width 1.5s ease-in-out;
-    animation: progressAnimation 1.5s ease-in-out;
+    transition: none !important; /* REMOVE animation */
 }
 
-.progress-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    animation: shimmer 2s infinite;
-}
-
-@keyframes progressAnimation {
-    from {
-        width: 0% !important;
-    }
-}
-
+/* REMOVE ALL ANIMATIONS */
+.progress-bar::after,
+@keyframes progressAnimation,
 @keyframes shimmer {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
+    display: none !important;
 }
 
-/* Skills Badges */
+/* -------- SKILLS BADGES -------- */
 .skills-badges {
     margin-top: 3rem;
 }
@@ -756,36 +734,36 @@ html {
     box-shadow: 0 6px 20px rgba(92, 225, 230, 0.4);
 }
 
-/* ========== SKILLS SECTION RESPONSIVE ========== */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .skills-section {
         padding: 80px 0;
     }
-    
+
     .skill-category {
         padding: 1.5rem;
     }
-    
+
     .skill-header {
         flex-direction: column;
         text-align: center;
         gap: 0.5rem;
     }
-    
+
     .skill-header i {
         margin-right: 0;
         margin-bottom: 0.5rem;
     }
-    
+
     .skill-header h3 {
         font-size: 1.3rem;
     }
-    
+
     .badges-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 0.8rem;
     }
-    
+
     .skill-badge {
         padding: 0.6rem 1.2rem;
         font-size: 0.85rem;
@@ -796,15 +774,15 @@ html {
     .skill-category {
         padding: 1.2rem;
     }
-    
+
     .skills-badges h3 {
         font-size: 1.5rem;
     }
-    
+
     .badges-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .skill-badge {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
