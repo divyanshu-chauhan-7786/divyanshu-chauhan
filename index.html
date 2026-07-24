@@ -27,6 +27,9 @@
 
 <body>
 
+    <!-- ================= PARTICLES BACKGROUND ================= -->
+    <div id="tsparticles"></div>
+
     <!-- ================= NAVBAR ================= -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
     <div class="container">
@@ -44,6 +47,10 @@
                 <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                 <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+                <!-- Theme Switcher -->
+                <li class="nav-item d-flex align-items-center ms-lg-2">
+                    <i class="bi bi-moon-stars-fill theme-icon" id="theme-toggle" style="cursor: pointer;"></i>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -55,34 +62,34 @@
         <div class="container text-center">
             <div class="hero-content">
                 <!-- Profile Image/Circle -->
-                <div class="hero-circle">
+                <div class="hero-circle js-animate zoom-in">
                     <img src="assets/images/divyanshu2.png" alt="Profile" class="profile-img">
                     <div class="circle-glow"></div>
                 </div>
 
 
                 <!-- Main Heading -->
-                <h1 class="hero-title">Hi &gt; I'm <span>Divyanshu Chauhan</span></h1>
+                <h1 class="hero-title js-animate fade-in-up" data-delay="100">Hi &gt; I'm <span>Divyanshu Chauhan</span></h1>
 
                 <!-- Subtitle -->
-                <p class="hero-sub">
-                    AI Engineer | Data Analyst |Machine Learning & Deep Learning
+                <p class="hero-sub js-animate fade-in-up" data-delay="200">
+                    AI Engineer | Data Analyst | Machine Learning & Deep Learning
                 </p>
 
                 <!-- Tagline -->
-                <p class="hero-tagline">
+                <p class="hero-tagline js-animate fade-in-up" data-delay="300">
                     Transforming data into intelligent insights through AI and creativity!
                 </p>
 
                 <!-- Action Buttons -->
-                <div class="hero-buttons mt-4">
+                <div class="hero-buttons mt-4 js-animate fade-in-up" data-delay="400">
                     <a href="#projects" class="btn btn-primary btn-lg me-3">View My Projects</a>
                     <a href="assets/images/divyanshu_resume.pdf" download="Divyanshu_Chauhan_Resume.pdf"
                         class="btn btn-outline-light btn-lg">Download Resume</a>
                 </div>
 
                 <!-- Social Icons -->
-                <div class="hero-icons mt-4">
+                <div class="hero-icons mt-4 js-animate fade-in-up" data-delay="500">
                     <a href="https://github.com/divyanshu-chauhan-7786" class="social-icon"><i
                             class="bi bi-github"></i></a>
                     <a href="https://www.linkedin.com/in/divyanshu-chauhan-4b6b9a2a2" class="social-icon"><i
@@ -95,7 +102,7 @@
                 </div>
 
                 <!-- Location -->
-                <p class="location mt-3">
+                <p class="location mt-3 js-animate fade-in-up" data-delay="600">
                     <i class="bi bi-geo-alt me-2"></i> Varanasi, Uttar Pradesh
                 </p>
             </div>
@@ -111,14 +118,14 @@
     <!-- ================= ABOUT SECTION ================= -->
     <section id="about" class="about-section">
         <div class="container py-5">
-            <h2 class="section-title text-center mb-5">About Me</h2>
+            <h2 class="section-title text-center mb-5 js-animate fade-in-down">About Me</h2>
 
             <div class="row align-items-center">
                 <!-- About Content - LEFT SIDE on desktop, BOTTOM on mobile -->
                 <div class="col-lg-8 col-md-7 order-lg-1 order-md-1 order-2">
                     <div class="about-content">
 
-                        <p class="about-text">
+                        <p class="about-text js-animate fade-in-left" data-delay="100">
                             I'm <strong>Divyanshu Chauhan</strong>, an emerging <strong>AI & Machine Learning
                                 Engineer</strong>
                             passionate about transforming data into intelligent, real-world solutions. I enjoy working
@@ -126,7 +133,7 @@
                             algorithms that learn, adapt, and solve meaningful problems.
                         </p>
 
-                        <p class="about-text">
+                        <p class="about-text js-animate fade-in-left" data-delay="200">
                             My technical work spans across
                             <strong>Machine Learning, Deep Learning (ANN, CNN, RNN, LSTM, GRU), Transformers, and
                                 NLP</strong>.
@@ -135,21 +142,21 @@
                             which drives how I design and train intelligent systems.
                         </p>
 
-                        <p class="about-text">
+                        <p class="about-text js-animate fade-in-left" data-delay="300">
                             My academic discipline, years of consistent performance, and hands-on technical experience
                             helped shape my analytical thinking. From working as a skilled technician to pursuing
                             <strong>B.Tech in AI & ML</strong>, each step strengthened my ability to break down complex
                             problems into elegant solutions.
                         </p>
 
-                        <p class="about-text">
+                        <p class="about-text js-animate fade-in-left" data-delay="400">
                             Outside the technical world, I'm a creator at heart — I write poetry, sing, and enjoy
                             sports.
                             These creative pursuits help me stay balanced and inspired.
                         </p>
 
                         <!-- Highlight Badges -->
-                        <div class="badges mt-4">
+                        <div class="badges mt-4 js-animate fade-in-up" data-delay="500">
                             <span class="badge-item">AI & ML Engineer</span>
                             <span class="badge-item">Machine Learning</span>
                             <span class="badge-item">Deep Learning</span>
@@ -158,7 +165,7 @@
 
 
                         </div>
-                        <div class="badges mt-4">
+                        <div class="badges mt-4 js-animate fade-in-up" data-delay="600">
                             <span class="badge-item">Data Science</span>
                             <span class="badge-item">NLP</span>
                             <span class="badge-item">Cricket</span>
@@ -174,7 +181,7 @@
 
                 <!-- Profile Image - RIGHT SIDE on desktop, TOP on mobile -->
                 <div class="col-lg-4 col-md-5 text-center mb-4 mb-md-0 order-lg-2 order-md-2 order-1">
-                    <div class="about-img-wrapper">
+                    <div class="about-img-wrapper js-animate zoom-in">
                         <img src="assets/images/divyanshu3.png" alt="Profile" class="about-img">
                         <div class="about-img-glow"></div>
                     </div>
@@ -186,12 +193,12 @@
     <!-- ================= SKILLS SECTION ================= -->
     <section id="skills" class="skills-section">
         <div class="container py-5">
-            <h2 class="section-title text-center mb-5">Skills & Expertise</h2>
+            <h2 class="section-title text-center mb-5 js-animate fade-in-down">Skills & Expertise</h2>
 
             <div class="row">
                 <!-- AI & Machine Learning -->
                 <div class="col-lg-6 mb-5">
-                    <div class="skill-category">
+                    <div class="skill-category js-animate fade-in-left">
                         <div class="skill-header">
                             <i class="bi bi-cpu"></i>
                             <h3>AI & Machine Learning</h3>
@@ -248,7 +255,7 @@
 
                 <!-- Programming & Development -->
                 <div class="col-lg-6 mb-5">
-                    <div class="skill-category">
+                    <div class="skill-category js-animate fade-in-right" data-delay="100">
                         <div class="skill-header">
                             <i class="bi bi-code-slash"></i>
                             <h3>Web Development </h3>
@@ -305,7 +312,7 @@
 
                 <!-- Data Analytics -->
                 <div class="col-lg-6 mb-5">
-                    <div class="skill-category">
+                    <div class="skill-category js-animate fade-in-left" data-delay="200">
                         <div class="skill-header">
                             <i class="bi bi-graph-up"></i>
                             <h3>Data Analytics</h3>
@@ -362,7 +369,7 @@
 
                 <!-- Tools & Technologies -->
                 <div class="col-lg-6 mb-5">
-                    <div class="skill-category">
+                    <div class="skill-category js-animate fade-in-right" data-delay="300">
                         <div class="skill-header">
                             <i class="bi bi-tools"></i>
                             <h3>Tools & Technologies</h3>
@@ -420,8 +427,8 @@
 
             <!-- Skills Badges -->
             <div class="skills-badges mt-5">
-                <h3 class="text-center mb-4">Specialized Expertise</h3>
-                <div class="badges-grid">
+                <h3 class="text-center mb-4 js-animate fade-in-up">Specialized Expertise</h3>
+                <div class="badges-grid js-animate fade-in-up" data-delay="100">
                     <span class="skill-badge">Feature Engineering</span>
                     <span class="skill-badge">Machine Learning</span>
                     <span class="skill-badge">Ensemble Learning</span>
@@ -458,14 +465,60 @@
     <!-- ================= PROJECTS SECTION ================= -->
     <section id="projects" class="projects-section">
         <div class="container py-5">
-            <h2 class="section-title text-center mb-5">Featured Projects</h2>
+            <h2 class="section-title text-center mb-5 js-animate fade-in-down">Featured Projects</h2>
+            
+            <!-- Project Filter Buttons -->
+            <div class="project-filters text-center mb-5 js-animate fade-in-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="full-stack">Full-Stack</button>
+                <button class="filter-btn" data-filter="generative-ai">Generative AI</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+            </div>
 
-            <div class="row g-4">
+
+            <div class="row g-4 project-grid">
 
 
 
-                 <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                 <div class="col-lg-4 col-md-6 project-item" data-category="full-stack generative-ai">
+                    <div class="project-card js-animate zoom-in">
+                        <div class="project-image">
+                            <img src="assets/images/Sociora.png"
+                                alt="Sociora">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/divyanshu-chauhan-7786/Sociora"
+                                        class="project-link">
+                                        <i class="bi bi-github"></i>
+                                    </a>
+                                     <a href="https://sociora-ai.vercel.app/" class="project-link">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Sociora <i class="bi bi-star-fill" style="color: gold; font-size: 0.9em; margin-left: 5px;"></i>
+runs your content calendar. </h3>
+                            <p class="project-description">
+                               Create AI-powered content, schedule across every platform, and manage your entire social workflow from one intelligent workspace.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js,Express,MongoDB</span>
+                                <span class="tech-tag">Generative AI</span>
+                                <span class="tech-tag">ImageKit</span>
+                                  <span class="tech-tag">Zernio</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 project-item" data-category="full-stack generative-ai">
+                    <div class="project-card js-animate zoom-in" data-delay="100">
                         <div class="project-image">
                             <img src="assets/images/Profilex.png"
                                 alt="ProfileX Resume Builder">
@@ -483,7 +536,7 @@
                             </div>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">ProfileX Resume Builder</h3>
+                            <h3 class="project-title">ProfileX Resume Builder <i class="bi bi-star-fill" style="color: gold; font-size: 0.9em; margin-left: 5px;"></i></h3>
                             <p class="project-description">
                                 AI-powered resume builder that creates professional, ATS-friendly resumes with smart suggestions, modern templates, and instant previews.
                             </p>
@@ -498,8 +551,8 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="ml">
+                    <div class="project-card js-animate zoom-in" data-delay="200">
                         <div class="project-image">
                             <img src="assets/images/Eccomerce.png" alt="eCommerce Recommendation System">
                             <div class="project-overlay">
@@ -532,8 +585,8 @@
                 </div>
 
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="ml generative-ai">
+                    <div class="project-card js-animate zoom-in" data-delay="0">
                         <div class="project-image">
                             <img src="assets/images/NewsVeritas.png" alt="Fake News Detection System">
                             <div class="project-overlay">
@@ -572,8 +625,8 @@
                 </div>
 
                 <!-- Project 3: Customer Churn Prediction -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="ml">
+                    <div class="project-card js-animate zoom-in" data-delay="100">
                         <div class="project-image">
                             <img src="assets/images/CustomerChurn.png"
                                 alt="Customer Churn Prediction">
@@ -604,8 +657,8 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="generative-ai">
+                    <div class="project-card js-animate zoom-in" data-delay="200">
                         <div class="project-image">
                             <img src="assets/images/Tallentscourt.png" alt="TalentScout — AI Hiring Assistant Chatbot">
                             <div class="project-overlay">
@@ -632,8 +685,8 @@
                 </div>
 
                 <!-- Project 5: Acedit.ai is an AI-powered interview preparation tool -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="full-stack generative-ai">
+                    <div class="project-card js-animate zoom-in" data-delay="0">
                         <div class="project-image">
                             <img src="assets/images/ACeit.png" alt="Acedit.ai Interview Preparation">
                             <div class="project-overlay">
@@ -660,8 +713,8 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="generative-ai">
+                    <div class="project-card js-animate zoom-in" data-delay="100">
                         <div class="project-image">
                             <img src="assets/images/assistant.png" alt="Sentiment Analysis">
                             <div class="project-overlay">
@@ -693,8 +746,8 @@
                 </div>
 
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="ml generative-ai">
+                    <div class="project-card js-animate zoom-in" data-delay="200">
                         <div class="project-image">
                             <img src="assets/images/Sentiment.png" alt="bert_phissing_detection">
                             <div class="project-overlay">
@@ -730,8 +783,8 @@
 
 
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="generative-ai">
+                    <div class="project-card js-animate zoom-in" data-delay="0">
                         <div class="project-image">
                             <img src="assets/images/end_to_end_rag.png" alt="RAG">
                             <div class="project-overlay">
@@ -760,8 +813,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="project-card">
+                <div class="col-lg-4 col-md-6 project-item" data-category="generative-ai">
+                    <div class="project-card js-animate zoom-in" data-delay="100">
 
                         <!-- Project Image -->
                         <div class="project-image">
@@ -822,17 +875,17 @@
     <!-- ================= EXPERIENCE & EDUCATION SECTION ================= -->
     <section id="experience" class="experience-section">
         <div class="container py-5">
-            <h2 class="section-title text-center mb-5">Experience & Education</h2>
+            <h2 class="section-title text-center mb-5 js-animate fade-in-down">Experience & Education</h2>
 
             <div class="timeline-container">
                 <!-- Experience Timeline -->
                 <div class="timeline-section">
-                    <h3 class="timeline-heading text-center mb-4">Work Experience</h3>
+                    <h3 class="timeline-heading text-center mb-4 js-animate fade-in-up">Work Experience</h3>
 
                     <div class="timeline">
 
                         <!-- Experience 2 -->
-                        <div class="timeline-item">
+                        <div class="timeline-item js-animate fade-in-right">
                             <div class="timeline-dot"></div>
                             <div class="timeline-content">
                                 <div class="timeline-card">
@@ -865,11 +918,11 @@
 
                 <!-- Education Timeline -->
                 <div class="timeline-section">
-                    <h3 class="timeline-heading text-center mb-4">Education</h3>
+                    <h3 class="timeline-heading text-center mb-4 js-animate fade-in-up">Education</h3>
 
                     <div class="timeline">
                         <!-- Education 1 -->
-                        <div class="timeline-item">
+                        <div class="timeline-item js-animate fade-in-left">
                             <div class="timeline-dot"></div>
                             <div class="timeline-content">
                                 <div class="timeline-card">
@@ -901,7 +954,7 @@
                         </div>
 
                         <!-- Education 2 -->
-                        <div class="timeline-item">
+                        <div class="timeline-item js-animate fade-in-right">
                             <div class="timeline-dot"></div>
                             <div class="timeline-content">
                                 <div class="timeline-card">
@@ -931,7 +984,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="timeline-item js-animate fade-in-left">
                             <div class="timeline-dot"></div>
                             <div class="timeline-content">
                                 <div class="timeline-card">
@@ -970,13 +1023,13 @@
     <!-- ================= CERTIFICATIONS SECTION ================= -->
     <section id="certificates" class="certifications-section">
         <div class="container py-5">
-            <h2 class="section-title text-center mb-5">Certifications</h2>
+            <h2 class="section-title text-center mb-5 js-animate fade-in-down">Certifications</h2>
 
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="certifications-grid">
                         <!-- Python Certification -->
-                        <div class="certification-card" data-pdf="assets/certificates/python.pdf">
+                        <div class="certification-card js-animate zoom-in" data-pdf="assets/certificates/python.pdf">
                             <div class="certification-image">
                                 <img src="assets/images/python.png" alt="Python Certification">
                                 <div class="certification-overlay">
@@ -992,7 +1045,7 @@
                         </div>
 
                         <!-- Java Certification -->
-                        <div class="certification-card" data-pdf="assets/certificates/java-programming.pdf">
+                        <div class="certification-card js-animate zoom-in" data-delay="100" data-pdf="assets/certificates/java-programming.pdf">
                             <div class="certification-image">
                                 <img src="assets/images/java.png" alt="Java Certification">
                                 <div class="certification-overlay">
@@ -1008,7 +1061,7 @@
                         </div>
 
                         <!-- Power BI Certification -->
-                        <div class="certification-card" data-pdf="assets/certificates/powerbi-certificate.pdf">
+                        <div class="certification-card js-animate zoom-in" data-delay="200" data-pdf="assets/certificates/powerbi-certificate.pdf">
                             <div class="certification-image">
                                 <img src="assets/images/power BI certificate.png" alt="Power BI Certification">
                                 <div class="certification-overlay">
@@ -1024,7 +1077,7 @@
                         </div>
 
                         <!-- AI Foundation -->
-                        <div class="certification-card" data-pdf="assets/certificates/ai-foundation.pdf">
+                        <div class="certification-card js-animate zoom-in" data-delay="0" data-pdf="assets/certificates/ai-foundation.pdf">
                             <div class="certification-image">
                                 <img src="assets/images/AI foundation.png" alt="AI Foundation">
                                 <div class="certification-overlay">
@@ -1040,7 +1093,7 @@
                         </div>
 
                         <!-- Web Development -->
-                        <div class="certification-card" data-pdf="assets/certificates/web-development.pdf">
+                        <div class="certification-card js-animate zoom-in" data-delay="100" data-pdf="assets/certificates/web-development.pdf">
                             <div class="certification-image">
                                 <img src="assets/images/Web development.png" alt="Web Development">
                                 <div class="certification-overlay">
@@ -1056,7 +1109,7 @@
                         </div>
 
                         <!-- ML Engineer -->
-                        <div class="certification-card" data-pdf="assets/certificates/ml-engineer.pdf">
+                        <div class="certification-card js-animate zoom-in" data-delay="200" data-pdf="assets/certificates/ml-engineer.pdf">
                             <div class="certification-image">
                                 <img src="assets/images/ML Engineer.png" alt="ML Engineer">
                                 <div class="certification-overlay">
@@ -1070,7 +1123,7 @@
                                 <p>AI and ML Engineer certificate course</p>
                             </div>
                         </div>
-                        <div class="certification-card" data-pdf="assets/certificates/Excel.pdf">
+                        <div class="certification-card js-animate zoom-in" data-delay="0" data-pdf="assets/certificates/Excel.pdf">
                             <div class="certification-image">
                                 <img src="assets/images/Excel.png" alt="Excel">
                                 <div class="certification-overlay">
@@ -1084,7 +1137,7 @@
                                 <p>Essential MS Excel for beginner to advanced level</p>
                             </div>
                         </div>
-                        <div class="certification-card" data-pdf="assets/certificates/data.pdf">
+                        <div class="certification-card js-animate zoom-in" data-delay="100" data-pdf="assets/certificates/data.pdf">
                             <div class="certification-image">
                                 <img src="assets/images/data analytic.png" alt="data analysis">
                                 <div class="certification-overlay">
@@ -1131,11 +1184,11 @@
     <!-- ================= CONTACT SECTION ================= -->
     <section id="contact" class="contact-section">
         <div class="container py-5">
-            <h2 class="section-title text-center mb-5">Get In Touch</h2>
+            <h2 class="section-title text-center mb-5 js-animate fade-in-down">Get In Touch</h2>
 
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="contact-card">
+                    <div class="contact-card js-animate zoom-in">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="contact-info">
@@ -1221,27 +1274,51 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <p class="footer-quote">
-                    "Transforming data into intelligent insights through AI and creativity!"
-                </p>
-                <div class="footer-links">
-                    <a href="#home" class="footer-link">Home</a>
-                    <a href="#about" class="footer-link">About</a>
-                    <a href="#skills" class="footer-link">Skill</a>
-                    <a href="#projects" class="footer-link">Projects</a> 
-                    <a href="#contact" class="footer-link">Contact</a>
+            <div class="row gy-4">
+                <!-- Footer About -->
+                <div class="col-lg-5 col-md-12 footer-about">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <span class="footer-brand">&lt;DC.dev /&gt;</span>
+                    </a>
+                    <p>An emerging AI & Machine Learning Engineer passionate about transforming data into intelligent, real-world solutions.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/divyanshu-chauhan-7786"><i class="bi bi-github"></i></a>
+                        <a href="https://www.linkedin.com/in/divyanshu-chauhan-4b6b9a2a2"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://huggingface.co/divyanshu-chauhan-7786"><i class="bi bi-cpu"></i></a>
+                        <a href="mailto:divyanshuchauhan471@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+                    </div>
                 </div>
-                <p class="footer-copyright">
-                    &copy; 2024 Divyanshu Chauhan. All rights reserved.
-                </p>
+
+                <!-- Footer Links -->
+                <div class="col-lg-3 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About me</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer Contact -->
+                <div class="col-lg-4 col-md-12 footer-contact text-center text-md-start">
+                    <h4>Contact Me</h4>
+                    <div class="footer-contact-item"><i class="bi bi-geo-alt"></i><p>Varanasi, Uttar Pradesh, India</p></div>
+                    <div class="footer-contact-item"><i class="bi bi-telephone"></i><p><a href="tel:+918960717110">+91 8960717110</a></p></div>
+                    <div class="footer-contact-item"><i class="bi bi-envelope"></i><p><a href="mailto:divyanshuchauhan471@gmail.com">divyanshuchauhan471@gmail.com</a></p></div>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- ================= BACK TO TOP BUTTON ================= -->
+    <a href="#" class="back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script src="script.js"></script>
